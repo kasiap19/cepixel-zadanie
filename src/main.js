@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import App from './App.vue';
-import Message from './components/Message.vue';
+import Header from './components/Header.vue';
+import User from './components/Users.vue';
 
-Vue.component('app-message', Message)
+Vue.component('app-header', Header)
+Vue.component('app-user', User)
 
 new Vue({
   el: '#app',
