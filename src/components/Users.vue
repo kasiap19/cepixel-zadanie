@@ -5,16 +5,21 @@
   <div id="users">
     <div v-for="user in filteredUsers ">
       <div class="header">
+          <a :href="user.html_url" target="_blank">
         <div class="">
           <img :src="user.avatar_url" alt="">
           <p>{{user.login}}</p>
+          {{user.length}}
         </div>
-      </div>
-      <div class="bottom">
-          <a :href="user.html_url" target="_blank">
+          <div class="bottom">
             <img src="../icon.png" alt="" class="icon">
-          </a>
+          </div>
+      </a>
       </div>
+
+
+
+
     </div>
   </div>
   </div>
@@ -34,16 +39,17 @@ export default {
     .then(response => response.json())
     .then((data) => {
       this.users = data;
-      console.log(data);
+      // console.log(data);
     })
   },
   computed:{
     filteredUsers: function(){
-      return this.users.filter((user) => {
-        return user.login.match(this.search)
+      return this.users.filter((users) => {
+        return users.login.match(this.search)
+
       });
     }
-  }
+  },
 }
 </script>
 
@@ -73,19 +79,26 @@ input[type="text"]{
     overflow: auto;
     background-color: white;
     padding:20px;
-
+    transition: transform .2s;
     div{
       align-self: center;
 
 
     }
 
+    a{
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 400;
+      color: black;
+    }
 
     p {
       font-size: 20px;
       font-weight: 400;
       padding:20px;
       margin-right:-40px;
+
     }
 
     img{
@@ -95,31 +108,19 @@ input[type="text"]{
       border-radius: 80px;
       float: left;
     }
+
+    &:hover{
+      transform: scale(1.1);
+      border: 2px solid #ddd;
+    }
+    .bottom{
+      img{
+        width:40px;
+        float: right;
+      }
+    }
   }
 
-    .bottom{
-      a{
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-        padding: 10px;
-        // background-color: #EEEEEE;
-        border-radius: 10px;
-        position: relative;
-        top:-35px;
-        // width:50px;
-        float: right;
-        // border: 1px solid #ddd;
-        background: white;
 
-          &:hover{
-            background-color: black;
-            height:40px;
-          }
-        }
-        .icon{
-          width:40px;
-        }
-    }
 }
 </style>
