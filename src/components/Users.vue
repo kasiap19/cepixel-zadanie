@@ -54,7 +54,6 @@ export default {
 
 
   .container{
-    padding: 20px;
     h1{
       text-align: center;
       font-size: 20px;
@@ -113,10 +112,6 @@ export default {
         margin-top:20px;
         text-decoration: none;
         color: #000;
-
-        p {
-             align-self: end;
-        }
         @media #{$tablet} {
           &:hover{
             transform: scale(1.1);
@@ -127,8 +122,9 @@ export default {
           img{
             width:100px;
             border-radius: 20px;
-            margin-left:3px;
-            margin-top:3px;
+            position: relative;
+            top:13px;
+            left:5px;
             &.icon{
               width:25px;
             }
