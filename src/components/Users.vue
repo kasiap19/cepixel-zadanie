@@ -5,8 +5,12 @@
         <div class="">
           <img :src="user.avatar_url" alt="">
           <p>{{user.login}}</p>
-          <a href=""></a>
         </div>
+      </div>
+      <div class="bottom">
+          <a :href="user.html_url" target="_blank">
+            <img src="../icon.png" alt="" class="icon">
+          </a>
       </div>
     </div>
   </div>
@@ -33,7 +37,7 @@ export default {
 <style lang="scss" scoped>
 #users{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 20px;
   // background-color: #757575;
 
@@ -54,7 +58,6 @@ export default {
 
     p{
       font-size:20px;
-      // font-weight: bold;
     }
 
     img{
@@ -65,5 +68,32 @@ export default {
       float: left;
     }
   }
+
+    .bottom{
+      a{
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        padding: 10px;
+        // background-color: #EEEEEE;
+        border-radius: 10px;
+        position: relative;
+        top:-35px;
+        // width:50px;
+        float: right;
+        // border: 1px solid #ddd;
+        background: white;
+        &:hover{
+          background-color: black;
+          height:40px;
+        }
+        }
+        .icon{
+          width:40px;
+
+
+        }
+
+    }
 }
 </style>
