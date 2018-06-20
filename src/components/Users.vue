@@ -1,9 +1,10 @@
 <template lang="html">
   <div class="container">
-      <h1>Github users:</h1>
+      <h1><span>{{users.length}}</span> Github users</h1>
       <input type="text" v-model="search" placeholder="Szukaj..." class="input" v-validate="'min:5'" name="search" />
       <div id="users">
         <div v-for="user in filteredUsers">
+          {{user.count}}
           <a :href="user.html_url" target="_blank" class="header">
             <div class="">
               <img :src="user.avatar_url" alt="">
@@ -15,7 +16,6 @@
           </a>
         </div>
       </div>
-
   </div>
 
 </template>
@@ -40,8 +40,9 @@ export default {
     filteredUsers: function(users){
       return this.users.filter((users) => {
         return users.login.toLowerCase().includes(this.search.toLowerCase())
+
       });
-    }
+    },
   },
 }
 </script>
@@ -53,12 +54,18 @@ export default {
 
 
   .container{
+    padding: 20px;
     h1{
       text-align: center;
       font-size: 20px;
+      span{
+        font-weight: bold;
+        font-size: 25px;
+      }
     }
     input[type="text"]{
       width:100%;
+      margin-top:15px;
       padding:5px;
       font-size:10px;
       border: 0;
@@ -71,6 +78,7 @@ export default {
 
       &:focus {
          border-bottom: 1px solid rgba(81, 203, 238, 1);
+         font-weight: bold;
        }
        @media #{$tablet} {
          font-size:14px;
@@ -120,6 +128,8 @@ export default {
           img{
             width:100px;
             border-radius: 20px;
+            margin-left:3px;
+            margin-top:3px;
             &.icon{
               width:25px;
             }
@@ -130,71 +140,7 @@ export default {
              padding:10px;
           }
         }
-
-
-
-
-
       }
     }
-
-  } // koniec .container
-
-
-// #users{
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   grid-column-gap: 20px;
-//   height:100px;
-//   // background-color: #757575;
-//
-//
-//   .header{
-//     margin-top:20px;
-//     border: 1px solid #eee;
-//     border-radius: 20px;
-//     display: grid;
-//     grid-template-columns: auto;
-//     overflow: auto;
-//     background-color: white;
-//     padding:20px;
-//     transition: transform .2s;
-//     div{
-//       align-self: center;
-//     }
-//
-//     a{
-//       text-decoration: none;
-//       font-size: 20px;
-//       font-weight: 400;
-//       color: black;
-//     }
-//     p {
-//       font-size: 20px;
-//       font-weight: 400;
-//       padding:20px;
-//       margin-right:-40px;
-//     }
-//
-//     img{
-//       width:100px;
-//       height:auto;
-//       align-self: center;
-//       border-radius: 80px;
-//       float: left;
-//     }
-//
-//     &:hover{
-//       transform: scale(1.1);
-//       box-shadow: 1px 1px 2px 2px #ddd;
-//
-//     }
-//     .bottom{
-//       img{
-//         width:40px;
-//         float: right;
-//       }
-//     }
-//   }
-// }
+  }
 </style>
