@@ -1,23 +1,23 @@
 <template lang="html">
   <div class="">
       <h1>Github users:</h1>
-      <input type="text" v-model="search" placeholder="Szukaj..." class="search" />
-  <div id="users">
-    <div v-for="user in filteredUsers ">
-      <div class="header">
-          <a :href="user.html_url" target="_blank">
-            <div class="">
-              <img :src="user.avatar_url" alt="">
-              <p>{{user.login}}</p>
-
-            </div>
-              <div class="bottom">
-                <img src="../icon.png" alt="" class="icon">
-              </div>
-          </a>
+      <input type="text" v-model="search" placeholder="Szukaj..." class="search" v-validate="'min:5'" name="search" />
+      <div id="users">
+        <div v-for="user in filteredUsers">
+          <div class="header" >
+              <a :href="user.html_url" target="_blank">
+                <div class="">
+                  <img :src="user.avatar_url" alt="">
+                  <p>{{user.login}}</p>
+                </div>
+                  <div class="bottom">
+                    <img src="../icon.png" alt="" class="icon">
+                  </div>
+              </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+
   </div>
 
 </template>
@@ -55,6 +55,13 @@ input[type="text"]{
   padding: 20px;
   width:50%;
   margin-bottom: 20px;
+
+  &:focus {
+    outline-width: 0;
+    + & .input-highlight{
+      border-bottom: 3px solid red;
+    }
+  }
 
 }
 #users{
