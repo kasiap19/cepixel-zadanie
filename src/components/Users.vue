@@ -1,25 +1,21 @@
 <template lang="html">
   <div class="">
-    <input type="text" v-model="search" placeholder="Szukaj..." class="search">
-
+      <h1>Github users:</h1>
+      <input type="text" v-model="search" placeholder="Szukaj..." class="search" />
   <div id="users">
     <div v-for="user in filteredUsers ">
       <div class="header">
           <a :href="user.html_url" target="_blank">
-        <div class="">
-          <img :src="user.avatar_url" alt="">
-          <p>{{user.login}}</p>
-          {{user.length}}
-        </div>
-          <div class="bottom">
-            <img src="../icon.png" alt="" class="icon">
-          </div>
-      </a>
+            <div class="">
+              <img :src="user.avatar_url" alt="">
+              <p>{{user.login}}</p>
+
+            </div>
+              <div class="bottom">
+                <img src="../icon.png" alt="" class="icon">
+              </div>
+          </a>
       </div>
-
-
-
-
     </div>
   </div>
   </div>
@@ -43,10 +39,9 @@ export default {
     })
   },
   computed:{
-    filteredUsers: function(){
+    filteredUsers: function(users){
       return this.users.filter((users) => {
-        return users.login.match(this.search)
-
+        return users.login.toLowerCase().includes(this.search.toLowerCase())
       });
     }
   },
@@ -82,8 +77,6 @@ input[type="text"]{
     transition: transform .2s;
     div{
       align-self: center;
-
-
     }
 
     a{
@@ -92,13 +85,11 @@ input[type="text"]{
       font-weight: 400;
       color: black;
     }
-
     p {
       font-size: 20px;
       font-weight: 400;
       padding:20px;
       margin-right:-40px;
-
     }
 
     img{
@@ -111,7 +102,8 @@ input[type="text"]{
 
     &:hover{
       transform: scale(1.1);
-      border: 2px solid #ddd;
+      box-shadow: 1px 1px 2px 2px #ddd;
+
     }
     .bottom{
       img{
@@ -120,7 +112,5 @@ input[type="text"]{
       }
     }
   }
-
-
 }
 </style>
