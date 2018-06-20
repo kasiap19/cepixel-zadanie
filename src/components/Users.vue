@@ -2,12 +2,12 @@
   <div id="users">
     <div v-for="user in users">
       <div class="header">
-          <img :src="user.avatar_url" alt="" />
-        </div>
         <div class="">
-          <h4>{{user.login}}</h4>
+          <img :src="user.avatar_url" alt="">
+          <p>{{user.login}}</p>
+          <a href=""></a>
         </div>
-
+      </div>
     </div>
   </div>
 </template>
@@ -33,28 +33,36 @@ export default {
 <style lang="scss" scoped>
 #users{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 20px;
+  // background-color: #757575;
 
   .header{
     margin-top:20px;
-    // border: 1px solid black;
+    border: 1px solid #eee;
+    border-radius: 20px;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto;
     overflow: auto;
-    height:500px;
-    margin:0 auto;
-    box-shadow: -60px 0px 100px -90px #ddd, 60px 0px 100px -90px #ddd;
+    background-color: white;
+    padding:20px;
 
-    h4{
-      text-align: left;
+    div{
+      align-self: center;
+
+    }
+
+    p{
+      font-size:20px;
+      // font-weight: bold;
     }
 
     img{
-      margin-top:50px;
       width:100px;
-      justify-self: center;
-      border-radius: 50px;
+      height:auto;
+        align-self: center;
+      border-radius: 80px;
+      float: left;
     }
   }
 }
