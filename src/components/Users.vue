@@ -123,7 +123,6 @@ export default {
             box-shadow: 1px 1px 2px 2px #ddd;
           }
         }
-
         div{
           img{
             width:100px;
